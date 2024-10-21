@@ -1,0 +1,27 @@
+{
+  "canisters": {
+    "secure_token_wallet_backend": {
+      "candid": "src/secure_token_wallet_backend/secure_token_wallet_backend.did",
+      "package": "secure_token_wallet_backend",
+      "type": "rust"
+    },
+    "secure_token_wallet_frontend": {
+      "dependencies": [
+        "secure_token_wallet_backend"
+      ],
+      "source": [
+        "src/secure_token_wallet_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "secure_token_wallet_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
