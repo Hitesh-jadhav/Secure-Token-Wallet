@@ -1,61 +1,100 @@
-# `secure_token_wallet`
+# Secure Token Wallet on ICP Blockchain
 
-Welcome to your new `secure_token_wallet` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+## Overview
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+The **Secure Token Wallet** is a Rust-based wallet designed for the **Internet Computer Protocol (ICP)** blockchain. This wallet allows users to send and receive **IRCRC2 tokens** securely, showcasing a robust understanding of Rust and blockchain development principles. 
 
-To learn more before you start working with `secure_token_wallet`, see the following documentation available online:
+## Table of Contents
 
-- [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
-- [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)
-- [Rust Canister Development Guide](https://internetcomputer.org/docs/current/developer-docs/backend/rust/)
-- [ic-cdk](https://docs.rs/ic-cdk)
-- [ic-cdk-macros](https://docs.rs/ic-cdk-macros)
-- [Candid Introduction](https://internetcomputer.org/docs/current/developer-docs/backend/candid/)
+- [Objective](#objective)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Testing](#testing)
+- [License](#license)
+- [Contact](#contact)
 
-If you want to start working on your project right away, you might want to try the following commands:
+## Objective
+
+Create a user-friendly token wallet that supports the essential functionalities of sending and receiving IRCRC2 tokens while implementing security measures to protect users' assets.
+
+## Features
+
+- **Send Tokens:** Effortlessly send IRCRC2 tokens to other wallet addresses.
+- **Receive Tokens:** Seamlessly receive tokens and automatically update your balance.
+- **Balance Display:** Instantly view the current token balance in your wallet.
+- **Basic Wallet Security:** Implement fundamental security features to ensure safe transactions.
+
+## Requirements
+
+### Blockchain Development
+
+- **Smart Contracts:**
+  - Utilize **Rust** for developing smart contracts to manage token transactions.
+  
+- **Deployment:**
+  - Deploy the contracts to a local **ICP test network**.
+
+### Smart Contract Features
+
+- Add functionalities for sending and receiving tokens.
+- Implement basic security features for the wallet.
+- Fetch and display current token balances.
+
+## Getting Started
+
+To get started with the Secure Token Wallet, follow these steps:
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/Hitesh-jadhav/secure-token-wallet.git
+   cd secure-token-wallet
+   ```
+
+2. **Install Dependencies:**
+   Make sure you have Rust and the necessary ICP tools installed. You can install Rust by following the [official Rust installation guide](https://www.rust-lang.org/tools/install).
+
+3. **Set Up ICP Environment:**
+   Follow the instructions on the [ICP developer portal](https://sdk.dfinity.org/docs/) to set up your local ICP test environment.
+
+4. **Build the Project:**
+   ```bash
+   cargo build
+   ```
+
+5. **Deploy Smart Contracts:**
+   Deploy your smart contracts to the local ICP network using the following command:
+   ```bash
+   dfx deploy
+   ```
+
+## Usage
+
+1. **Send Tokens:**
+   Use the wallet interface to input the recipient's address and the amount of IRCRC2 tokens you wish to send.
+
+2. **Receive Tokens:**
+   Provide your wallet address to others so they can send you tokens.
+
+3. **Check Balance:**
+   View your current token balance in the wallet interface.
+
+## Testing
+
+To ensure the functionality of the smart contracts, unit tests have been developed using the ICP framework. To run the tests, use the command:
 
 ```bash
-cd secure_token_wallet/
-dfx help
-dfx canister --help
+cargo test
 ```
 
-## Running the project locally
+## License
 
-If you want to test your project locally, you can use the following commands:
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-```bash
-# Starts the replica, running in the background
-dfx start --background
+## Contact
 
-# Deploys your canisters to the replica and generates your candid interface
-dfx deploy
-```
+For any inquiries or contributions, feel free to reach out:
 
-Once the job completes, your application will be available at `http://localhost:4943?canisterId={asset_canister_id}`.
-
-If you have made changes to your backend canister, you can generate a new candid interface with
-
-```bash
-npm run generate
-```
-
-at any time. This is recommended before starting the frontend development server, and will be run automatically any time you run `dfx deploy`.
-
-If you are making frontend changes, you can start a development server with
-
-```bash
-npm start
-```
-
-Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 4943.
-
-### Note on frontend environment variables
-
-If you are hosting frontend code somewhere without using DFX, you may need to make one of the following adjustments to ensure your project does not fetch the root key in production:
-
-- set`DFX_NETWORK` to `ic` if you are using Webpack
-- use your own preferred method to replace `process.env.DFX_NETWORK` in the autogenerated declarations
-  - Setting `canisters -> {asset_canister_id} -> declarations -> env_override to a string` in `dfx.json` will replace `process.env.DFX_NETWORK` with the string in the autogenerated declarations
-- Write your own `createActor` constructor
+- **Hitesh Rohidas Jadhav**  
+  [LinkedIn](https://www.linkedin.com/in/hitesh-jadhav-983b41264/) | [GitHub](https://github.com/Hitesh-jadhav)
