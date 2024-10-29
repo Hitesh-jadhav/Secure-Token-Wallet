@@ -1,100 +1,140 @@
-# Secure Token Wallet on ICP Blockchain
 
-## Overview
+# Secure Token Wallet
 
-The **Secure Token Wallet** is a Rust-based wallet designed for the **Internet Computer Protocol (ICP)** blockchain. This wallet allows users to send and receive **IRCRC2 tokens** securely, showcasing a robust understanding of Rust and blockchain development principles. 
+A secure token wallet built on the Internet Computer Protocol (ICP) blockchain, utilizing Rust for secure token transfers, minting, and querying balances.
+
+---
 
 ## Table of Contents
 
-- [Objective](#objective)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Testing](#testing)
-- [License](#license)
-- [Contact](#contact)
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [Getting Started](#getting-started)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Testing](#testing)
+7. [File Structure](#file-structure)
+8. [Contributing](#contributing)
+9. [License](#license)
 
-## Objective
+---
 
-Create a user-friendly token wallet that supports the essential functionalities of sending and receiving IRCRC2 tokens while implementing security measures to protect users' assets.
+## Project Overview
+
+The **Secure Token Wallet** is a blockchain-based wallet application that enables secure, efficient token transactions on the ICP blockchain. Built with Rust, this application allows users to mint tokens, check balances, and perform transfers between accounts.
+
+---
 
 ## Features
 
-- **Send Tokens:** Effortlessly send IRCRC2 tokens to other wallet addresses.
-- **Receive Tokens:** Seamlessly receive tokens and automatically update your balance.
-- **Balance Display:** Instantly view the current token balance in your wallet.
-- **Basic Wallet Security:** Implement fundamental security features to ensure safe transactions.
+- **Mint Tokens**: Create tokens for a given account.
+- **Transfer Tokens**: Securely transfer tokens between accounts.
+- **Query Balance**: Check the balance of any account.
 
-## Requirements
-
-### Blockchain Development
-
-- **Smart Contracts:**
-  - Utilize **Rust** for developing smart contracts to manage token transactions.
-  
-- **Deployment:**
-  - Deploy the contracts to a local **ICP test network**.
-
-### Smart Contract Features
-
-- Add functionalities for sending and receiving tokens.
-- Implement basic security features for the wallet.
-- Fetch and display current token balances.
+---
 
 ## Getting Started
 
-To get started with the Secure Token Wallet, follow these steps:
+### Prerequisites
 
-1. **Clone the Repository:**
+To run this project, you will need:
+
+- [DFX SDK](https://internetcomputer.org/docs/current/developer-docs/setup/install) (Internet Computer SDK)
+- [Rust](https://www.rust-lang.org/tools/install) programming language and package manager
+- [Node.js and npm](https://nodejs.org/) (for front-end testing, if applicable)
+
+---
+
+## Installation
+
+Follow these steps to set up and run the project:
+
+1. **Clone the Repository**:
+    ```bash
+    git clone https://github.com/Hitesh-jadhav/Secure-Token-Wallet.git
+    cd Secure-Token-Wallet
+    ```
+
+2. **Install Dependencies**:
+   - Install Rust if not already installed:
+     ```bash
+     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+     ```
+   - Install DFX SDK:
+     ```bash
+     sh -ci "$(curl -fsSL https://internetcomputer.org/docs/current/developer-docs/setup/install)"
+     ```
+
+3. **Start Local Replica**:
    ```bash
-   git clone https://github.com/Hitesh-jadhav/secure-token-wallet.git
-   cd secure-token-wallet
+   dfx start --background
    ```
 
-2. **Install Dependencies:**
-   Make sure you have Rust and the necessary ICP tools installed. You can install Rust by following the [official Rust installation guide](https://www.rust-lang.org/tools/install).
-
-3. **Set Up ICP Environment:**
-   Follow the instructions on the [ICP developer portal](https://sdk.dfinity.org/docs/) to set up your local ICP test environment.
-
-4. **Build the Project:**
-   ```bash
-   cargo build
-   ```
-
-5. **Deploy Smart Contracts:**
-   Deploy your smart contracts to the local ICP network using the following command:
+4. **Deploy the Canister**:
    ```bash
    dfx deploy
    ```
 
+---
+
 ## Usage
 
-1. **Send Tokens:**
-   Use the wallet interface to input the recipient's address and the amount of IRCRC2 tokens you wish to send.
+Once deployed, you can interact with the canisters using the following methods.
 
-2. **Receive Tokens:**
-   Provide your wallet address to others so they can send you tokens.
+### Check Balance
 
-3. **Check Balance:**
-   View your current token balance in the wallet interface.
+```bash
+dfx canister call secure_token_wallet_backend get_balance '(principal "<principal_id>")'
+```
+
+### Transfer Tokens
+
+```bash
+dfx canister call secure_token_wallet_backend transfer '(principal "<from_principal>", principal "<to_principal>", <amount>)'
+```
+
+### Mint Tokens
+
+```bash
+dfx canister call secure_token_wallet_backend mint '(principal "<principal_id>", <amount>)'
+```
+
+---
 
 ## Testing
 
-To ensure the functionality of the smart contracts, unit tests have been developed using the ICP framework. To run the tests, use the command:
+To run the test suite:
 
-```bash
-cargo test
+1. **Run Tests**:
+    ```bash
+    cargo test
+    ```
+
+2. **Verify Output**: Ensure all test cases pass without errors.
+
+---
+
+## File Structure
+
 ```
+Secure-Token-Wallet/
+├── src/
+│   ├── secure_token_wallet_backend/
+│   │   ├── lib.rs                  # Core backend functionality
+│   └── secure_token_wallet_frontend/
+│       └── (Optional front-end code for interaction)
+├── README.md                       # Documentation
+└── Cargo.toml                       # Rust package configuration
+```
+
+---
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any improvements.
+
+---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For any inquiries or contributions, feel free to reach out:
-
-- **Hitesh Rohidas Jadhav**  
-  [LinkedIn](https://www.linkedin.com/in/hitesh-jadhav-983b41264/) | [GitHub](https://github.com/Hitesh-jadhav)
+This project is licensed under the MIT License.
